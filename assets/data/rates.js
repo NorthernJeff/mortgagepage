@@ -4,6 +4,7 @@
    to the date and time of the update (Eastern time, ISO format). */
 window.MP_RATES = {
   updated: null,   // e.g. "2026-11-23T10:30:00-05:00"
+  prime: 4.70,     // Canadian prime rate, shown above the rates table and used for the HELOC rate
   fixed: [
     { term: "6-month",  rate: null, lender: "", logo: "", inquire: "" },
     { term: "2-year",   rate: null, lender: "", logo: "", inquire: "" },
@@ -16,5 +17,7 @@ window.MP_RATES = {
   variable: [
     { term: "3-year",   rate: null, lender: "", logo: "", inquire: "" },
     { term: "5-year",   rate: null, lender: "", logo: "", inquire: "" }
-  ]
+  ],
+  // HELOC: shown as Prime + spread (e.g. 0.50 means Prime + 0.50%). Set "rate" to a number to override.
+  heloc: { spread: 0.50, rate: null, lender: "", logo: "", inquire: "" }
 };

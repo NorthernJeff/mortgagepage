@@ -9,7 +9,9 @@
   /* ---------- Rates ---------- */
   var TERM_LABEL = { "6-month":"6-Month", "1-year":"1-Year", "2-year":"2-Year", "3-year":"3-Year", "4-year":"4-Year", "5-year":"5-Year", "7-year":"7-Year", "10-year":"10-Year" };
 
-  function cell(r, kind){
+  function num(x){ return typeof x === "number" && isFinite(x); }
+
+  function cell(r, kind, extra){
     if (!r) return '<div class="mp-cell empty"></div>';
     var has = typeof r.rate === "number" && isFinite(r.rate);
     var lender = r.logo
@@ -17,8 +19,10 @@
       : (r.lender ? '<span>' + esc(r.lender) + '</span>' : "");
     var btn = has ? '<a class="mp-inquire" href="' + esc(r.inquire || "#") + '"' + (r.inquire ? (/^https?:/.test(r.inquire) ? ' target="_blank" rel="noopener"' : "") : ' data-nolink="1"') +
       ' aria-label="Inquire about the ' + esc(r.term) + ' ' + kind + ' rate">Inquire</a>' : "";
-    return '<div class="mp-cell"><span class="mp-tag">' + (kind === "fixed" ? "Fixed" : "Variable") + '</span>' +
-      '<span class="mp-rate' + (has ? "" : " none") + '">' + (has ? r.rate.toFixed(2) + "%" : "&ndash;") + '</span>' +
+    var tag = kind === "fixed" ? "Fixed" : kind === "HELOC" ? "HELOC" : "Variable";
+    return '<div class="mp-cell' + (extra && extra.cls ? " " + extra.cls : "") + '"><span class="mp-tag">' + tag + '</span>' +
+      '<span class="mp-rate' + (has ? "" : " none") + '">' + (has ? r.rate.toFixed(2) + "%" : "&ndash;") +
+      (extra && extra.note ? '<small class="mp-ratenote">' + esc(extra.note) + '</small>' : "") + '</span>' +
       '<span class="mp-lender">' + lender + '</span>' + btn + '</div>';
   }
 
@@ -34,7 +38,22 @@
       var v = (R.variable || []).filter(function(r){ return r.term === t; })[0];
       rows += '<div class="mp-row" role="row"><div class="mp-term" role="rowheader">' + esc(TERM_LABEL[t] || t) + '</div>' + cell(f, "fixed") + cell(v, "variable") + '</div>';
     });
+    var h = R.heloc;
+    if (h){
+      var prime = num(R.prime) ? R.prime : null;
+      var spread = num(h.spread) ? h.spread : 0;
+      var hr = num(h.rate) ? h.rate : (prime !== null ? Math.round((prime + spread) * 100) / 100 : null);
+      var note = num(h.rate) ? "" : (prime !== null ? "Prime " + (spread < 0 ? "\u2212 " : "+ ") + Math.abs(spread).toFixed(2) + "%" : "");
+      var hc = { term: "HELOC", rate: hr, lender: h.lender, logo: h.logo, inquire: h.inquire };
+      rows += '<div class="mp-row mp-row-heloc" role="row"><div class="mp-term" role="rowheader">HELOC</div>' + cell(hc, "HELOC", { cls: "mp-span", note: note }) + '</div>';
+    }
     box.innerHTML = rows;
+
+    var pr = document.getElementById("mpPrime");
+    if (pr){
+      if (num(R.prime)) pr.innerHTML = 'The Prime rate is currently <strong>' + R.prime.toFixed(2) + '%</strong>.';
+      else pr.hidden = true;
+    }
     box.addEventListener("click", function(e){
       var a = e.target.closest && e.target.closest("a[data-nolink]");
       if (a) e.preventDefault();

@@ -27,6 +27,12 @@ VARIABLE RATES
 5-year variable Rate: ______ %   Lender: ____________________   Inquire link: ____________________
 
 
+PRIME AND HELOC
+---------------
+Prime rate:     ______ %
+HELOC           Prime + ______ %  (or a set rate: ______ %)   Lender: ____________________   Inquire link: ____________________
+
+
 LOGOS ATTACHED (file name = lender)
 -----------------------------------
 ____________________ = ____________________

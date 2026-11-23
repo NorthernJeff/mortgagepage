@@ -73,6 +73,10 @@ body{margin:0;background:#fff;color:var(--site-ink);font-family:var(--site-font)
 .mp-inquire:hover{background:var(--site-red-dark);color:#fff}
 .mp-inquire:focus-visible{outline:2px solid var(--site-navy);outline-offset:2px}
 .mp-cell.empty{background:#fff}
+.mp-cell.mp-span{grid-column:2 / span 2}
+.mp-ratenote{display:block;font-family:var(--site-num);font-size:.72rem;font-weight:500;color:var(--site-muted);margin-top:2px}
+.mp-prime{margin:0;padding:12px 18px;background:var(--site-sky-2);border-bottom:1px solid var(--site-line);color:var(--site-navy);font-size:.98rem}
+.mp-prime strong{font-family:var(--site-num);font-weight:700}
 .mp-tag{display:none}
 .mp-updated{margin:0;padding:14px 18px;border-top:1px solid var(--site-line);background:var(--site-sky-2);color:var(--site-navy);font-weight:600;font-size:.95rem}
 .mp-disclaimer{margin:0;color:var(--site-muted);font-size:.82rem;max-width:90ch}
@@ -87,6 +91,7 @@ body{margin:0;background:#fff;color:var(--site-ink);font-family:var(--site-font)
   .mp-cell.empty{display:none}
   .mp-tag{display:block;width:100%;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--site-muted);margin-bottom:-6px}
   .mp-rate{font-size:1.25rem}
+  .mp-row-heloc .mp-tag{display:none}
 }
 
 /* Cards (calculators, news) */
