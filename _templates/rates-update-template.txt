@@ -1,0 +1,38 @@
+MORTGAGEPAGE.CA - RATES UPDATE
+==============================
+
+How to use:
+1. Fill in the rate for each term (for example 4.44). Leave a rate blank to show a dash.
+2. Enter the lender, broker or brokerage shown beside each rate.
+3. If a lender is new, attach its logo image (PNG or JPG) to your message with this file.
+4. The Inquire link is optional. Leave it blank until you have one.
+5. Send this file (or paste it) to Claude and ask to update the rates on MortgagePage.ca.
+   The "Rates last updated at" time is set automatically when Claude makes the update.
+
+
+FIXED RATES
+-----------
+6-month fixed   Rate: ______ %   Lender: ____________________   Inquire link: ____________________
+2-year fixed    Rate: ______ %   Lender: ____________________   Inquire link: ____________________
+3-year fixed    Rate: ______ %   Lender: ____________________   Inquire link: ____________________
+4-year fixed    Rate: ______ %   Lender: ____________________   Inquire link: ____________________
+5-year fixed    Rate: ______ %   Lender: ____________________   Inquire link: ____________________
+7-year fixed    Rate: ______ %   Lender: ____________________   Inquire link: ____________________
+10-year fixed   Rate: ______ %   Lender: ____________________   Inquire link: ____________________
+
+
+VARIABLE RATES
+--------------
+3-year variable Rate: ______ %   Lender: ____________________   Inquire link: ____________________
+5-year variable Rate: ______ %   Lender: ____________________   Inquire link: ____________________
+
+
+LOGOS ATTACHED (file name = lender)
+-----------------------------------
+____________________ = ____________________
+____________________ = ____________________
+
+
+NOTES FOR CLAUDE (optional)
+---------------------------
+

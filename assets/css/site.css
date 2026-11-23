@@ -1,0 +1,133 @@
+/* MortgagePage.ca site styles. White ground, navy and red as the main colours, faded light blue for shading.
+   Every class here starts with "site-" or "mp-" (page parts) so it never clashes with the calculator styles. */
+:root{
+  --site-navy:#13294b; --site-navy-2:#1c3d72; --site-red:#d71920; --site-red-dark:#b3141a;
+  --site-sky:#eaf2fb; --site-sky-2:#f4f8fd; --site-line:#d6e0ec;
+  --site-ink:#15202d; --site-muted:#5a6678;
+  --site-font:"Archivo","Segoe UI",system-ui,-apple-system,sans-serif;
+  --site-num:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#fff;color:var(--site-ink);font-family:var(--site-font)}
+.site-skip{position:absolute;left:-9999px;top:0;background:var(--site-navy);color:#fff;padding:8px 14px;z-index:100}
+.site-skip:focus{left:8px;top:8px}
+
+/* Header */
+.site-header{border-top:5px solid var(--site-red);background:#fff;border-bottom:1px solid var(--site-line);font-family:var(--site-font)}
+.site-header-in{max-width:1100px;margin:0 auto;padding:14px max(16px,env(safe-area-inset-left,0px));
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 24px}
+.site-logo{display:block;line-height:0}
+.site-logo img{height:58px;width:auto;max-width:100%}
+.site-nav{display:flex;flex-wrap:wrap;gap:4px 6px;font-size:1rem;font-weight:700}
+.site-nav a{color:var(--site-navy);text-decoration:none;padding:8px 12px;border-radius:6px;border-bottom:3px solid transparent}
+.site-nav a:hover{background:var(--site-sky);color:var(--site-navy)}
+.site-nav a[aria-current="page"]{border-bottom-color:var(--site-red);border-radius:6px 6px 0 0}
+.site-nav a:focus-visible,.site-logo:focus-visible{outline:2px solid var(--site-navy-2);outline-offset:2px}
+@media (max-width:620px){
+  .site-header-in{justify-content:center}
+  .site-logo img{height:44px}
+  .site-nav{justify-content:center}
+}
+
+/* Breadcrumb above each calculator */
+.site-crumb{max-width:1100px;margin:0 auto;padding:14px max(16px,env(safe-area-inset-left,0px)) 0;font-family:var(--site-font);font-size:.9rem}
+.site-crumb a{color:var(--site-navy-2);font-weight:600;text-decoration:none}
+.site-crumb a:hover{text-decoration:underline}
+
+/* Footer */
+.site-footer{background:var(--site-navy);color:#d8e2f0;margin-top:48px;font-family:var(--site-font);font-size:.88rem;line-height:1.55}
+.site-footer-in{max-width:1100px;margin:0 auto;padding:28px max(16px,env(safe-area-inset-left,0px)) 34px;display:flex;flex-direction:column;gap:12px}
+.site-footer-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 24px}
+.site-footer-brand{color:#fff;font-weight:800;font-size:1.15rem;letter-spacing:.01em}
+.site-footer-brand span{color:#ff5a5f}
+.site-footer-links{display:flex;flex-wrap:wrap;gap:4px 18px}
+.site-footer-links a{color:#fff;text-decoration:none;font-weight:600}
+.site-footer-links a:hover{text-decoration:underline}
+.site-footer p{margin:0;max-width:90ch}
+.site-footer small{color:#aebbd0}
+
+/* Generic page parts (home, calculators menu, news) */
+.mp-main{max-width:1100px;margin:0 auto;padding:30px max(16px,env(safe-area-inset-left,0px)) 10px;display:flex;flex-direction:column;gap:30px;font-size:16px;line-height:1.55}
+.mp-intro h1{margin:0;font-size:clamp(1.7rem,4.2vw,2.5rem);font-weight:800;line-height:1.1;color:var(--site-navy);letter-spacing:-.01em;text-wrap:balance}
+.mp-intro p{margin:8px 0 0;color:var(--site-muted);max-width:66ch}
+.mp-eyebrow{display:block;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--site-red);margin-bottom:6px}
+.mp-h2{margin:0 0 12px;font-size:1.35rem;font-weight:800;color:var(--site-navy)}
+
+/* Rates table */
+.mp-rates{border:1px solid var(--site-line);border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 1px 2px rgba(19,41,75,.06)}
+.mp-rates-title{margin:0;padding:14px 18px;font-size:1.1rem;font-weight:800;color:var(--site-navy);border-bottom:1px solid var(--site-line)}
+.mp-rgrid{display:grid;grid-template-columns:130px minmax(0,1fr) minmax(0,1fr)}
+.mp-rhead{background:var(--site-navy);color:#fff;font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:14px 16px;text-align:center}
+.mp-rhead + .mp-rhead{border-left:1px solid rgba(255,255,255,.25)}
+.mp-row{display:contents}
+.mp-term{background:var(--site-sky);color:var(--site-navy);font-weight:800;font-size:1.02rem;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px 10px;border-top:1px solid var(--site-line)}
+.mp-cell{display:flex;align-items:center;gap:14px;padding:12px 16px;border-top:1px solid var(--site-line);border-left:1px solid var(--site-line);min-height:76px}
+.mp-row:nth-child(even) .mp-cell{background:var(--site-sky-2)}
+.mp-row:nth-child(even) .mp-term{background:#dde9f7}
+.mp-rate{font-family:var(--site-num);font-weight:600;font-size:1.35rem;color:var(--site-navy);min-width:4.4em;font-variant-numeric:tabular-nums}
+.mp-rate.none{color:#9aa6b6;font-weight:500}
+.mp-lender{flex:1;min-width:0;display:flex;align-items:center}
+.mp-lender img{max-height:44px;max-width:150px;width:auto;height:auto;display:block}
+.mp-lender span{font-weight:700;color:var(--site-ink);font-size:.95rem}
+.mp-inquire{flex:none;display:inline-block;background:var(--site-red);color:#fff;text-decoration:none;font-weight:700;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;padding:10px 18px;border-radius:6px;border:0;cursor:pointer}
+.mp-inquire:hover{background:var(--site-red-dark);color:#fff}
+.mp-inquire:focus-visible{outline:2px solid var(--site-navy);outline-offset:2px}
+.mp-cell.empty{background:#fff}
+.mp-tag{display:none}
+.mp-updated{margin:0;padding:14px 18px;border-top:1px solid var(--site-line);background:var(--site-sky-2);color:var(--site-navy);font-weight:600;font-size:.95rem}
+.mp-disclaimer{margin:0;color:var(--site-muted);font-size:.82rem;max-width:90ch}
+
+@media (max-width:760px){
+  .mp-rgrid{display:block}
+  .mp-rhead{display:none}
+  .mp-row{display:block;border-top:1px solid var(--site-line)}
+  .mp-row:first-of-type{border-top:0}
+  .mp-term{justify-content:flex-start;border-top:0;padding:10px 16px;background:var(--site-sky)!important}
+  .mp-cell{border-left:0;min-height:0;flex-wrap:wrap;background:#fff!important}
+  .mp-cell.empty{display:none}
+  .mp-tag{display:block;width:100%;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--site-muted);margin-bottom:-6px}
+  .mp-rate{font-size:1.25rem}
+}
+
+/* Cards (calculators, news) */
+.mp-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.mp-card{display:flex;flex-direction:column;gap:8px;border:1px solid var(--site-line);border-radius:12px;padding:18px;background:#fff;text-decoration:none;color:inherit;border-top:4px solid var(--site-navy);transition:box-shadow .15s,border-color .15s}
+.mp-card:hover{box-shadow:0 4px 14px rgba(19,41,75,.12);border-top-color:var(--site-red)}
+.mp-card:focus-visible{outline:2px solid var(--site-navy-2);outline-offset:2px}
+.mp-card h3{margin:0;font-size:1.12rem;font-weight:800;color:var(--site-navy)}
+.mp-card p{margin:0;color:var(--site-muted);font-size:.93rem}
+.mp-card .mp-go{margin-top:auto;color:var(--site-red);font-weight:700;font-size:.9rem}
+.mp-card.news{padding:0;overflow:hidden}
+.mp-card.news img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:var(--site-sky)}
+.mp-card.news .mp-card-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.mp-date{font-size:.8rem;color:var(--site-muted);font-weight:600;letter-spacing:.02em}
+.mp-empty{border:1px dashed var(--site-line);border-radius:12px;padding:26px;text-align:center;color:var(--site-muted);background:var(--site-sky-2)}
+.mp-more{color:var(--site-navy-2);font-weight:700;text-decoration:none}
+.mp-more:hover{text-decoration:underline}
+
+/* Article */
+.mp-article{max-width:760px;margin:0 auto;width:100%}
+.mp-article h1{margin:0;font-size:clamp(1.7rem,4.2vw,2.4rem);font-weight:800;line-height:1.15;color:var(--site-navy);text-wrap:balance}
+.mp-article .mp-date{display:block;margin-top:10px}
+.mp-article figure{margin:22px 0 0}
+.mp-article figure img{width:100%;height:auto;border-radius:10px;display:block}
+.mp-article figcaption{font-size:.85rem;color:var(--site-muted);margin-top:6px}
+.mp-article-body{margin-top:22px;font-size:1.06rem;line-height:1.7}
+.mp-article-body h2{color:var(--site-navy);font-size:1.35rem;margin:1.6em 0 .4em}
+.mp-article-body h3{color:var(--site-navy);font-size:1.12rem;margin:1.4em 0 .3em}
+.mp-article-body p{margin:0 0 1em}
+.mp-article-body a{color:var(--site-navy-2)}
+.mp-article-body blockquote{margin:1.2em 0;padding:4px 18px;border-left:4px solid var(--site-red);background:var(--site-sky-2);color:var(--site-ink)}
+.mp-back{display:inline-block;margin-top:26px;color:var(--site-navy-2);font-weight:700;text-decoration:none}
+.mp-back:hover{text-decoration:underline}
+
+/* Calculator pages: recolour the calculators to the site's navy and red */
+.mp-calc{
+  --blue:#1c3d72; --blue-2:#13294b; --blue-soft:#eaf2fb;
+  --accent:#13294b; --accent-soft:#eaf2fb;
+  --f-display:"Archivo","Segoe UI",system-ui,sans-serif;
+  --f-body:"Archivo","Segoe UI",system-ui,sans-serif;
+}
+.mp-calc header .eyebrow,.mp-calc header .tag{color:var(--site-red)}
+.mp-calc .mp header h1,.mp-calc .mc header h1,.mp-calc .lt header h1,.mp-calc .hv header h1,.mp-calc .wrap header h1{color:var(--site-navy)}
+.mp-calc button.primary:hover{background:#0d1d36;filter:none}
